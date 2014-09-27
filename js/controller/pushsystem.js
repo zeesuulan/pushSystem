@@ -3,7 +3,9 @@
 angular.module("CS")
 	.controller("c_pushsystem",
 		function($scope, $rootScope) {
-			$scope.list = []
+			$scope.games = []
+
+			$scope.lan = window.LAN
 
 			$.get("api/checkLogin.php", function(data) {
 				if (data.no != 0) {
@@ -14,12 +16,13 @@ angular.module("CS")
 
 			$.get("api/getFlashGames.php", function(data) {
 				if (data.no == 0) {
-					$scope.$apply(function(){
-						$scope.list = data.data.games
+					$scope.$apply(function() {
+						$scope.games = data.data.games
+						$scope.tasks = data.data.tasks
 					})
 					return
 				}
 			}, "json")
-			
+
 		}
 );

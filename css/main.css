@@ -18,3 +18,18 @@
 #list{
 	margin: 20px 0;
 }
+.info{
+	border-bottom: 1px dashed #ccc;
+	padding-bottom: 10px;
+}
+.info h5{
+	float: left;
+	margin-right: 20px;
+}
+#addTaskDialog .col-md-6{
+	padding-left: 0;
+}
+
+#addTaskDialog .col-md-6:nth-child(even){
+	padding-right: 0;
+}

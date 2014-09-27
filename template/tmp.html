@@ -1,0 +1,32 @@
+<h3>游戏列表</h3>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+                    <!-- <td>注册ID</td> -->
+                    <td>设备ID</td>
+                    <!-- <td>设备信息</td> -->
+                    <td>游戏名称</td>
+                    <!-- <td>游戏ID</td> -->
+                    <td>版本</td>
+                    <!-- <td>其他信息</td> -->
+                    <td>国家 - 城市</td>
+                    <td>时间</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in list">
+                    <!-- <td>{{item.register_id}}</td> -->
+                    <td>{{item.device_id}}</td>
+                    <!-- <td>{{item.device_info}}</td> -->
+                    <td>{{item.app_name}}</td>
+                    <!-- <td>{{item.app_id}}</td> -->
+                    <td>{{item.version}}</td>
+                    <!-- <td>{{item.other_info}}</td> -->
+                    <td>{{item.country}} - {{item.city}}</td>
+                    <td>{{item.time}}</td>
+                    <td><a href="#" class="btn btn-primary">GO</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>

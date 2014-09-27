@@ -1,0 +1,1 @@
+CS.directive("atd",function(){return{restrict:"E",template:"template/add_task.html",replace:!0,link:function(){}}});
