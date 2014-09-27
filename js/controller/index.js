@@ -1,7 +1,7 @@
 'use strict'
 angular.module("CS")
 	.controller("c_index",
-		function($scope) {
+		function($scope, $rootScope) {
 
 			$scope.showLogin = false
 
@@ -19,6 +19,7 @@ angular.module("CS")
 					$(ele.target).serialize(),
 					function(data) {
 						if (data.no == 0) {
+							$rootScope.group = data.data.group
 							$.cookie("username", data.data.username)
 							window.location.hash = "/menu"
 						} else {

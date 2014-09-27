@@ -12,6 +12,10 @@ CS.config(function($routeProvider) {
 		templateUrl: 'template/menu.html',
 		controller: "c_menu"
 	}).
+	when('/pushsystem', {
+		templateUrl: 'template/pushsystem.html',
+		controller: "c_pushsystem"
+	}).
 	when('/logout', {
 		template: "<span>正在退出...</span>",
 		controller: "c_logout"
@@ -21,9 +25,10 @@ CS.config(function($routeProvider) {
 	})
 
 }).controller("c_logout",
-	function($scope) {
+	function($scope, $rootScope) {
 		$.cookie("username", null, {
 			expires: -1
 		})
+		$rootScope.group = null
 		window.location.hash = "/index"
 	})
