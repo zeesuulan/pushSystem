@@ -52,7 +52,7 @@ module.exports = function(grunt) {
     concat: {
       all: {
         files: [{
-          src: ['js/lib/jquery.min.js', 'js/lib/angular.min.js', 'js/lib/angular-route.min.js', 'js/lib/app.js', 'js/lib/bootstrap.min.js'],
+          src: ['js/lib/jquery.min.js', 'js/lib/jquery.cookie.js', 'js/lib/angular.min.js', 'js/lib/angular-route.min.js', 'js/lib/app.js', 'js/lib/bootstrap.min.js'],
           dest: 'js/lib/lib.js'
         }, {
           src: ['js/controller/*', '!js/controller/c.js'],

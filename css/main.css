@@ -1,0 +1,17 @@
+#login{
+	margin-top: 60px;
+}
+
+#login h1{
+	padding: 10px 0;
+}
+
+#menu{
+	margin-top: 50px;
+}
+#menu ul{
+	list-style: decimal-leading-zero;
+}
+#menu li{
+	padding: 20px 0;
+}

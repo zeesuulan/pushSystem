@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Push System</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/css.css">
 </head>
 
 <body>
