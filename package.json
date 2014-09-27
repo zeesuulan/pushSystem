@@ -1,0 +1,14 @@
+{
+	"name": "gruntjs.cn",
+	"version": "0.1.0",
+	"devDependencies": {
+		"grunt": "*",
+		"grunt-contrib-watch": "",
+		"grunt-contrib-concat": "",
+		"grunt-contrib-uglify": "",
+		"grunt-contrib-connect": "",
+		"grunt-contrib-less": "",
+		"connect-livereload": "",
+        "json-proxy": ""
+	}
+}
