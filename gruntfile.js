@@ -43,7 +43,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: ['js/**/*.js', 'css/*.css', 'less/*.less'],
-        tasks: ['less:all','concat:all', 'uglify'],
+        tasks: ['less:all', 'concat:all'],
         options: {
           spawn: false,
         },
@@ -52,7 +52,16 @@ module.exports = function(grunt) {
     concat: {
       all: {
         files: [{
-          src: ['js/lib/jquery.min.js', 'js/lib/jquery.cookie.js', 'js/lib/angular.min.js', 'js/lib/angular-route.min.js', 'js/lib/app.js', 'js/lib/bootstrap.min.js', 'js/lib/config.js'],
+          src: ['js/lib/jquery.min.js',
+            'js/lib/jquery.cookie.js',
+            'js/lib/angular-file-upload-shim.min.js',
+            'js/lib/angular.min.js',
+            'js/lib/angular-file-upload.min.js',
+            'js/lib/angular-route.min.js',
+            'js/lib/app.js',
+            'js/lib/bootstrap.min.js',
+            'js/lib/config.js'
+          ],
           dest: 'js/lib/lib.js'
         }, {
           src: ['js/controller/*', '!js/controller/c.js'],

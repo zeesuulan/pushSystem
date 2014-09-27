@@ -1,6 +1,6 @@
 'use strict'
 //Chen's System
-var CS = angular.module("CS", ['ngRoute'])
+var CS = angular.module("CS", ['ngRoute',"angularFileUpload"])
 
 CS.config(function($routeProvider) {
 	$routeProvider.

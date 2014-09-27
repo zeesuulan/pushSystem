@@ -51,7 +51,7 @@
                     <h4 class="modal-title" id="myModalLabel">添加任务</h4>
                 </div>
                 <form class="form" id="addTask">
-                <div class="modal-body">
+                    <div class="modal-body">
                         <div class="form-group">
                             <label>消息标题</label>
                             <input type="text" class="form-control" name="title" placeholder="消息标题">
@@ -62,11 +62,14 @@
                         </div>
                         <div class="form-group">
                             <label>上传图标</label>
-                            <input type="text" class="form-control" name="image" placeholder="消息标题">
+                            <img ng-src="{{imagepath}}" class="uploadIcon">
+                            <input type="hidden" name="image" id="imagepath">
+                            <input type="file" ng-file-select="onFileSelect($files, 'image', 'imagepath')">
                         </div>
                         <div class="form-group">
                             <label>上传文件</label>
-                            <input type="text" class="form-control" name="file" placeholder="消息标题">
+                            <input type="text" class="form-control" name="file" placeholder="文件地址" id="filepath">
+                            <input type="file" ng-file-select="onFileSelect($files, 'file', 'filepath')">
                         </div>
                         <div class="form-group clearfix">
                             <div class="col-md-6">
@@ -104,10 +107,10 @@
                                 <input type="checkbox" class="form-control" name="priority">
                             </div>
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">添加</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">添加</button>
+                    </div>
                 </form>
             </div>
         </div>
