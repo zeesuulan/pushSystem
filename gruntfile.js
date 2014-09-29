@@ -63,6 +63,7 @@ module.exports = function(grunt) {
             'js/lib/app.js',
             'js/lib/datetimepicker.js',
             'js/lib/bootstrap.min.js',
+            'js/lib/tooltip.js',
             'js/lib/config.js'
           ],
           dest: 'js/lib/lib.js'

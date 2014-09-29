@@ -64,6 +64,32 @@ controller("c_pushsystem",
 			}
 		}
 
+		$scope.search = function(evt) {
+			$.post("api/searchTask.php", {
+				key: $(evt.target).val()
+			}, function(data) {
+				if (data.no == 0) {
+					$scope.tasks = data.data.tasks
+				} else {
+					alert(data.data)
+				}
+			}, "json")
+		}
+
+		$scope.del = function(evt) {
+			if (window.confirm("确定删除任务？")) {
+				$.post("api/deleteTask.php", {
+					id: $(evt.target).attr("tid")
+				}, function(data) {
+					if (data.no == 0) {
+						getFlashGame()
+					} else {
+						alert(data.data)
+					}
+				}, "json")
+			}
+		}
+
 		////==========上传========
 		$scope.onFileSelect = function($files, $type, $ele_id) {
 			var file = $files[0];
@@ -108,9 +134,9 @@ controller("c_pushsystem",
 				function(data) {
 					if (data.no == 0) {
 						getFlashGame()
-						alert(data.data)
 						$('#addTaskDialog').modal('hide')
 					}
+					alert(data.data)
 				}, "json")
 		})
 
@@ -124,8 +150,10 @@ controller("c_pushsystem",
 				"width": "30px",
 				"height": "30px"
 			})
+		}).on("mouseover", 'span[data-toggle=tooltip]', function() {
+			console.log("as")
+			$(this).tooltip('show');
 		})
-
 
 		getFlashGame()
 
