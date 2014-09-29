@@ -15,7 +15,8 @@
             <thead>
                 <tr>
                     <td>消息标题</td>
-                    <td>图标&文件</td>
+                    <td>图标</td>
+                    <td>文件</td>
                     <td>推送目标国家</td>
                     <td>推送目标语言</td>
                     <td>推送数目</td>
@@ -26,16 +27,18 @@
             </thead>
             <tbody>
                 <tr ng-repeat="t in tasks">
-                    <td>{{t.title}}</td>
+                    <td data-toggle="tooltip" data-placement="right" title="{{t.content}}">{{t.title}}</td>
                     <td>
-                        <img ng-src="{{t.image}}"><a ng-href="{{t.file}}">下载文件</a>
+                        <img ng-src="{{t.image}}">
+                    </td>
+                    <td><a target="_blank" ng-href="{{t.file}}">文件地址</a>
                     </td>
                     <td>{{t.country}}</td>
                     <td>{{t.language}}</td>
                     <td>{{t.push_num}}</td>
-                    <td>{{t.repush}}</td>
+                    <td>{{t.repush | repush}}</td>
                     <td>{{t.push_time}}</td>
-                    <td>{{t.priority}}</td>
+                    <td>{{t.priority | priority}}</td>
                 </tr>
             </tbody>
         </table>

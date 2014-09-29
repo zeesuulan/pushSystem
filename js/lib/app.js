@@ -1,6 +1,6 @@
 'use strict'
 //Chen's System
-var CS = angular.module("CS", ['ngRoute',"angularFileUpload", "ui.bootstrap.datetimepicker"])
+var CS = angular.module("CS", ['ngRoute', "angularFileUpload", "ui.bootstrap.datetimepicker"])
 
 CS.config(function($routeProvider) {
 	$routeProvider.
@@ -24,11 +24,24 @@ CS.config(function($routeProvider) {
 		redirectTo: '/index'
 	})
 
-}).controller("c_logout",
-	function($scope, $rootScope) {
-		$.cookie("username", null, {
-			expires: -1
+})
+	.controller("c_logout",
+		function($scope, $rootScope) {
+			$.cookie("username", null, {
+				expires: -1
+			})
+			$rootScope.group = null
+			window.location.hash = "/index"
 		})
-		$rootScope.group = null
-		window.location.hash = "/index"
+	.filter("repush", function() {
+		var repush = function(value) {
+			return value == 1 ? "是" : "否"
+		};
+		return repush
+	})
+	.filter("priority", function() {
+		var priority = function(value) {
+			return value == 1 ? "优先" : "一般"
+		};
+		return priority
 	})

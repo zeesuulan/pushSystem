@@ -58,19 +58,31 @@ controller("c_pushsystem",
 		}, "json")
 
 		$("#addTask").on("submit", function() {
-			console.log($(this).serialize())
+			$.post("api/addTask.php",
+				$(this).serialize(),
+				function(data) {
+					if (data.no == 0) {
+						getFlashGame()
+						alert(data.data)
+						$('#addTaskDialog').modal('hide')
+					}
+				}, "json")
 		})
 
-		$.get("api/getFlashGames.php", function(data) {
-			if (data.no == 0) {
-				$scope.$apply(function() {
-					$scope.games = data.data.games
-					$scope.tasks = data.data.tasks
-					$scope.countrys = data.data.countrys
-				})
-				return
-			}
-		}, "json")
 
+		getFlashGame()
+
+		function getFlashGame() {
+			$.get("api/getFlashGames.php", function(data) {
+				if (data.no == 0) {
+					$scope.$apply(function() {
+						$scope.games = data.data.games
+						$scope.tasks = data.data.tasks
+						$scope.countrys = data.data.countrys
+					})
+					return
+				}
+			}, "json")
+		}
 	}
 );
