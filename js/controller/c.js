@@ -53,6 +53,17 @@ controller("c_pushsystem",
 		$scope.lan = window.LAN
 		$scope.imagepath = ""
 
+		$scope.$watch('data.date', function(newValue, oldValue) {
+			$scope.dateformat = moment(newValue).format("YYYY-MM-DD HH:m")
+			$scope.repush = false
+		});
+
+		$scope.repushChanged = function() {
+			if ($scope.repush) {
+				$scope.dateformat = ""
+			}
+		}
+
 		////==========上传========
 		$scope.onFileSelect = function($files, $type, $ele_id) {
 			var file = $files[0];
@@ -72,8 +83,11 @@ controller("c_pushsystem",
 				file: file,
 			}).success(function(data, status, headers, config) {
 				if (data.no == 0) {
-					$scope.imagepath = data.data.filepath
-					$($ele_id).val(data.data.filepath)
+					if ($type == 'image') {
+						$scope.imagepath = data.data.filepath
+					} else {
+						$scope.filepath = data.data.filepath
+					}
 				} else {
 					alert(data.data)
 				}

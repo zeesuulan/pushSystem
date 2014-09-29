@@ -58,7 +58,10 @@ module.exports = function(grunt) {
             'js/lib/angular.min.js',
             'js/lib/angular-file-upload.min.js',
             'js/lib/angular-route.min.js',
+            'js/lib/moment.min.js',
+            'js/lib/zh-cn.js',
             'js/lib/app.js',
+            'js/lib/datetimepicker.js',
             'js/lib/bootstrap.min.js',
             'js/lib/config.js'
           ],

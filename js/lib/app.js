@@ -1,6 +1,6 @@
 'use strict'
 //Chen's System
-var CS = angular.module("CS", ['ngRoute',"angularFileUpload"])
+var CS = angular.module("CS", ['ngRoute',"angularFileUpload", "ui.bootstrap.datetimepicker"])
 
 CS.config(function($routeProvider) {
 	$routeProvider.
