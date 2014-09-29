@@ -1,5 +1,6 @@
 <div class="container">
     <h1>Push System</h1>
+    <pushnav></pushnav>
     <div class="info clearfix">
         <h5>
             <a href="#/menu">回到上一级菜单</a>
@@ -11,7 +12,8 @@
             <h3 class="col-md-2" style="margin-top:0;padding-left:0">推送任务列表</h3>
             <button class="btn btn-primary" data-toggle="modal" data-target="#addTaskDialog">添加任务</button>
             <h5># tips： 鼠标移至标题上查看推送内容</h5>
-            搜索：<input type="text" ng-keyup="search($event)">
+            搜索：
+            <input type="text" ng-keyup="search($event)">
         </div>
         <table class="table table-striped table-bordered table-hover table-condensed" id="task-table">
             <thead>

@@ -491,6 +491,14 @@ CS.config(function($routeProvider) {
 		templateUrl: 'template/pushsystem.html',
 		controller: "c_pushsystem"
 	}).
+	when('/pushpool', {
+		templateUrl: 'template/pushpool.html',
+		controller: "c_pushpool"
+	}).
+	when('/pushlog', {
+		templateUrl: 'template/pushlog.html',
+		controller: "c_pushlog"
+	}).
 	when('/logout', {
 		template: "<span>正在退出...</span>",
 		controller: "c_logout"

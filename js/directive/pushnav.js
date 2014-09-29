@@ -1,11 +1,3 @@
-CS.directive('atd', function() {
-	return {
-		restrict: 'E',
-		template: 'template/add_task.html',
-		replace: true,
-		link: function(){}
-	};
-});
 CS.directive('pushnav', function() {
 	return {
 		restrict: 'E',

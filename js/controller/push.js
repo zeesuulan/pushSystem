@@ -4,7 +4,7 @@ angular.module("CS").
 controller("c_pushsystem",
 	function($scope, $upload) {
 		$scope.games = []
-
+		$scope.pushsystemcls = "active"
 		$scope.lan = window.LAN
 		$scope.imagepath = ""
 
@@ -125,4 +125,13 @@ controller("c_pushsystem",
 			}, "json")
 		}
 	}
-);
+).controller("c_pushpool",
+	function($scope) {
+		$scope.pushpoolcls = "active"
+	}
+).controller("c_pushlog",
+	function($scope) {
+		$scope.pushlogcls = "active"
+
+	}
+)
