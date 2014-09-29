@@ -69,6 +69,18 @@ controller("c_pushsystem",
 				}, "json")
 		})
 
+		$("#task-table").on("mouseenter", "img", function() {
+			$(this).stop().animate({
+				"width": "150px",
+				"height": "150px"
+			})
+		}).on("mouseleave", "img", function() {
+			$(this).stop().animate({
+				"width": "30px",
+				"height": "30px"
+			})
+		})
+
 
 		getFlashGame()
 

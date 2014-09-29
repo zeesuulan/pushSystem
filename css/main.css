@@ -34,6 +34,11 @@
 	padding-right: 0;
 }
 
+#task-table img{
+	width: 30px;
+	height: 30px;
+}
+
 .uploadIcon{
 	width: 150px;
 	height: 150px;
