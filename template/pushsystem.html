@@ -49,6 +49,7 @@
                     <td>{{t.priority | priority}}</td>
                     <td>
                         <button class="btn btn-primary">修改</button>
+                        <button class="btn btn-info" ng-show={{t.push_time}} tid={{t.id}} title="{{t.title}}" ng-click="pushTask($event)">推送</button>
                         <button class="btn btn-danger" ng-click="del($event)" tid={{t.id}}>删除</button>
                     </td>
                 </tr>

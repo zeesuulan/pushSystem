@@ -45,6 +45,21 @@ controller("c_pushsystem",
 			}
 		}
 
+		$scope.pushTask = function(evt) {
+			var target = $(evt.target),
+				tid = target.attr("tid"),
+				title = target.attr("title")
+
+			if (window.confirm("确定推送任务『" + title + "』 ？")) {
+				$.post("api/pushTask.php", {
+					task_id: tid
+				} , function(data) {
+
+					alert(data.data)
+				}, "json")
+			}
+		}
+
 		////==========上传========
 		$scope.onFileSelect = function($files, $type, $ele_id) {
 			var file = $files[0];
@@ -89,7 +104,9 @@ controller("c_pushsystem",
 				function(data) {
 					if (data.no == 0) {
 						getFlashGame()
-						$('#addTaskDialog').modal('hide')
+						$('#addTaskDialog').modal('hide').find("input").val("").find("textarea").val("").find("img").attr("src", "")
+						$scope.imagepath = ""
+						$scope.filepath = ""
 					}
 					alert(data.data)
 				}, "json")

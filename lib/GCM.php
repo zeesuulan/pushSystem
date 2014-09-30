@@ -22,8 +22,6 @@ class GCM {
      * Sending Push Notification
      */
     public function send_notification($registatoin_ids, $message) {
-        // include config
-        include_once 'config.php';
 
         // Set POST variables
         $url = 'https://android.googleapis.com/gcm/send';
