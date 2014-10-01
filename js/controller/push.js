@@ -2,11 +2,13 @@
 
 angular.module("CS").
 controller("c_pushsystem",
-	function($scope, $upload) {
+	function($scope, $upload, $rootScope) {
 		$scope.games = []
 		$scope.pushsystemcls = "active"
 		$scope.lan = window.LAN
 		$scope.imagepath = ""
+
+		$scope.isAdmin = ($rootScope.group == 1)
 
 		$scope.$watch('data.date', function(newValue, oldValue) {
 			$scope.dateformat = moment(newValue).format("YYYY-MM-DD HH:m")
@@ -53,7 +55,7 @@ controller("c_pushsystem",
 			if (window.confirm("确定推送任务『" + title + "』 ？")) {
 				$.post("api/pushTask.php", {
 					task_id: tid
-				} , function(data) {
+				}, function(data) {
 
 					alert(data.data)
 				}, "json")
@@ -123,7 +125,6 @@ controller("c_pushsystem",
 				"height": "30px"
 			})
 		}).on("mouseover", 'span[data-toggle=tooltip]', function() {
-			console.log("as")
 			$(this).tooltip('show');
 		})
 
@@ -150,5 +151,17 @@ controller("c_pushsystem",
 	function($scope) {
 		$scope.pushlogcls = "active"
 
+		getLogs()
+
+		function getLogs() {
+			$.get("api/getLogs.php", function(data) {
+				if (data.no == 0) {
+					$scope.$apply(function() {
+						$scope.singleLogs = data.data.singleLogs
+						$scope.repushlogs = data.data.repushlogs
+					})
+				}
+			}, "json")
+		}
 	}
 )

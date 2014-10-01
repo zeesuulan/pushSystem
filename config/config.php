@@ -11,6 +11,8 @@ define("DB_DATABASE", "GCM");
  */
 define("GOOGLE_API_KEY", "AIzaSyDSwjDATD72McZRbQdsAaWnaw1jE_73hwk");
 
+date_default_timezone_set("Asia/Chongqing");
+
 	$APP_ROOT_PATH = '/pushsystem/';
 	$SERVER_PATH = $_SERVER['DOCUMENT_ROOT'];
 	$SERVER_NAME = "http://".$_SERVER['SERVER_NAME'];

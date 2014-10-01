@@ -13,9 +13,17 @@
 					]);
 
 				if($task){
+					
+					$D->insert("push_log", [
+						"task_id" => $_POST['task_id'],
+						"operator" => $_COOKIE['username'],
+						"datetime" => date("Y-m-d H:i:s"),
+						"type" => "single"
+					]);
+
 					$gcm = new GCM();
 					$result = $gcm->send_notification($task['register_id'], $task['content']);
-					//add log
+
 					wapReturns(array("result"=>$result), 0);
 				}else{
 					wapReturns("任务不存在", -1);

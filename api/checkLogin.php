@@ -6,7 +6,8 @@
 		if ($D->has("user", [
 				"username" => $_COOKIE['username']
 			])){
-				wapReturns("", 0);
+				$group = $D->get("user", ["group"], ["username"=>$_COOKIE['username']]);
+				wapReturns(array("group"=>$group["group"]), 0);
 		}else{
 			wapReturns("用户名或者密码错误", -1);
 		}

@@ -5,11 +5,27 @@
 	if(isset($_COOKIE['username'])){
 		
 		if(isset($_POST['key'])) {
+			$key = $_POST['key'];
+			$priority = null;
+			$repush = null;
+
+			if($key == '优先') {
+				$priority = 1;
+			}else if($_POST['key'] == '一般'){
+				$priority = 0;
+			}
+
+			if($key == '重复') {
+				$repush = 1;
+			}
+
 			$tasks = $D->select("push_task", "*",[
 					'LIKE' => [
 						'OR' => [
-							"title" => $_POST['key'],
-							"content" => $_POST['key']
+							"title" => $key,
+							"content" => $key,
+							"priority" => $priority,
+							"repush" => $repush
 						]
 					]
 				]);
