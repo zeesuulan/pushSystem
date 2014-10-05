@@ -2,7 +2,7 @@
 
 	require '../config/config.php';
 
-	if(isset($_COOKIE['username'])){
+	if(isset($_COOKIE['username']) && isAdmin()){
 		
 		if(isset($_POST['id'])) {
 			$D->delete("push_task", [

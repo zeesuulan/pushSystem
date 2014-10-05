@@ -2,7 +2,7 @@
 	
 	require_once "../config/config.php";
 
-	if(isset($_COOKIE['username'])){
+	if(isset($_COOKIE['username']) && isAdmin()){
 		if(isset($_POST)){
 			$p = $_POST;
 			if(!$p['username'] ||

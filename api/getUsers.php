@@ -2,7 +2,7 @@
 
 	require '../config/config.php';
 
-	if(isset($_COOKIE['username'])) {
+	if(isset($_COOKIE['username']) && isAdmin()) {
 		
 		$users = $D->select("user", [
 				"username",

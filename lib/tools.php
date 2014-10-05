@@ -32,3 +32,9 @@
 		return ($condition == $match) ? $macth_one : $match_two;
 	}
 
+	function isAdmin(){
+		global $D
+		$group = $D->get("user", ["group"], ["username"=>$_COOKIE['username']]);
+		return $group == 1
+	}
+

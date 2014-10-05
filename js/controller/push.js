@@ -171,6 +171,18 @@ controller("c_pushsystem",
 ).controller("c_pushpool",
 	function($scope) {
 		$scope.pushpoolcls = "active"
+
+		getTasks()
+
+		function getTasks() {
+			$.get("api/getRepushTask.php", function(data) {
+				if (data.no == 0) {
+					$scope.$apply(function() {
+						$scope.repush_tasks = data.data.repush_tasks
+					})
+				}
+			}, "json")
+		}
 	}
 ).controller("c_pushlog",
 	function($scope) {

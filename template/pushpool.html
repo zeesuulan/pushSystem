@@ -1,4 +1,25 @@
 <div class="container">
     <h1>Push Pool</h1>
     <pushnav></pushnav>
+    <div class="row">
+        <h4>推送池中共有任务
+            <span>共{{repush_tasks.length}}条</span>
+        </h4>
+        <table class="table table-striped table-bordered table-hover table-condensed" id="single-log-table">
+            <thead>
+                <tr>
+                    <td>推送任务标题</td>
+                    <td>操作人</td>
+                    <td>操作时间</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="s in singleLogs">
+                    <td>{{s.title}}</td>
+                    <td>{{s.operator}}</td>
+                    <td>{{s.datetime}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
