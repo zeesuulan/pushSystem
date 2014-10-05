@@ -7,8 +7,19 @@ controller("c_pushsystem",
 		$scope.pushsystemcls = "active"
 		$scope.lan = window.LAN
 		$scope.imagepath = ""
+		$scope.c_all = false
+		$scope.l_all = false
+		$scope.isAdmin = true
 
-		$scope.isAdmin = ($rootScope.group == 1)
+		$.get("api/checkLogin.php", function(data) {
+			if (data.no != 0) {
+				window.location.hash = "/index"
+				return
+			}else{
+				$scope.isAdmin = (data.data.group == 1)
+			}
+		}, "json")
+
 
 		$scope.$watch('data.date', function(newValue, oldValue) {
 			$scope.dateformat = moment(newValue).format("YYYY-MM-DD HH:m")
@@ -19,6 +30,26 @@ controller("c_pushsystem",
 			if ($scope.repush) {
 				$scope.dateformat = ""
 			}
+		}
+
+		$scope.filepathChanged = function() {
+			console.log($scope.filepath)
+			if ($scope.filepath.indexOf(".apk") < 0 &&
+				$scope.filepath.indexOf(".ipa") < 0) {
+				alert("上传文件格式不对")
+				$scope.filepath = ""
+			}
+		}
+		$scope.c_all_click = function() {
+			angular.forEach($scope.countrys, function(c) {
+				c.s = !$scope.c_all;
+			});
+		}
+
+		$scope.l_all_click = function() {
+			angular.forEach($scope.lan, function(l) {
+				l.s = !$scope.l_all;
+			});
 		}
 
 		$scope.search = function(evt) {
@@ -93,13 +124,6 @@ controller("c_pushsystem",
 		}
 		////==========上传========
 
-		$.get("api/checkLogin.php", function(data) {
-			if (data.no != 0) {
-				window.location.hash = "/index"
-				return
-			}
-		}, "json")
-
 		$("#addTask").on("submit", function() {
 			$.post("api/addTask.php",
 				$(this).serialize(),
@@ -135,7 +159,8 @@ controller("c_pushsystem",
 				if (data.no == 0) {
 					$scope.$apply(function() {
 						$scope.games = data.data.games
-						$scope.tasks = data.data.tasks
+						$scope.priority_tasks = data.data.priority_tasks
+						$scope.nomarl_tasks = data.data.nomarl_tasks
 						$scope.countrys = data.data.countrys
 					})
 					return

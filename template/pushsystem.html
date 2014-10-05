@@ -13,8 +13,7 @@
             <button class="btn btn-primary" data-toggle="modal" data-target="#addTaskDialog">添加任务</button>
             <h5># tips： 鼠标移至标题上查看推送内容</h5>
             搜索：
-            <input type="text" ng-keyup="search($event)"> 
-            (支持标题、内容、优先级搜索)
+            <input type="text" ng-keyup="search($event)">(支持标题、内容、优先级搜索)
         </div>
         <table class="table table-striped table-bordered table-hover table-condensed" id="task-table">
             <thead>
@@ -33,14 +32,37 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="t in tasks">
+                <tr ng-repeat="t in priority_tasks">
                     <td>
                         <span data-toggle="tooltip" data-placement="right" title="{{t.content}}">{{t.title}}</span>
                     </td>
                     <td>
                         <img ng-src="{{t.image}}">
                     </td>
-                    <td><a target="_blank" ng-href="{{t.file}}">文件地址</a>
+                    <td><a target="_blank" ng-href="{{t.file}}">连接地址</a>
+                    </td>
+                    <td>{{t.country}}</td>
+                    <td>{{t.language}}</td>
+                    <td>{{t.push_num}}</td>
+                    <td>{{t.repush | repush}}</td>
+                    <td>{{t.push_time}}</td>
+                    <td>{{t.priority | priority}}</td>
+                    <td ng-show={{isAdmin}}>
+                        <!-- <button class="btn btn-primary">修改</button> -->
+                        <button class="btn btn-info" ng-show={{t.push_time}} tid={{t.id}} title="{{t.title}}" ng-click="pushTask($event)">推送</button>
+                    </td>
+                    <td ng-show={{isAdmin}}>
+                        <button class="btn btn-danger" ng-click="del($event)" tid={{t.id}}>删除</button>
+                    </td>
+                </tr>
+                <tr ng-repeat="t in nomarl_tasks">
+                    <td>
+                        <span data-toggle="tooltip" data-placement="right" title="{{t.content}}">{{t.title}}</span>
+                    </td>
+                    <td>
+                        <img ng-src="{{t.image}}">
+                    </td>
+                    <td><a target="_blank" ng-href="{{t.file}}">连接地址</a>
                     </td>
                     <td>{{t.country}}</td>
                     <td>{{t.language}}</td>
@@ -77,33 +99,37 @@
                         </div>
                         <div class="form-group">
                             <label>消息内容</label>
-                            <textarea name="content" class="form-control" cols="30" rows="10"></textarea>
+                            <textarea name="content" class="form-control" cols="30" rows="2"></textarea>
                         </div>
                         <div class="form-group">
-                            <label>上传图标</label>
+                            <label>上传图标(只允许上传png、jpeg、jpg文件)</label>
                             <img ng-src="{{imagepath}}" class="uploadIcon">
                             <input type="hidden" name="image" value="{{imagepath}}" id="imagepath">
                             <input type="file" ng-file-select="onFileSelect($files, 'image', 'imagepath')">
                         </div>
                         <div class="form-group">
-                            <label>上传文件</label>
-                            <input type="text" class="form-control" name="file" placeholder="文件地址" id="filepath" value="{{filepath}}">
+                            <label>上传文件(只允许上传apk、ipa文件)</label>
+                            <input type="text" class="form-control" name="file" placeholder="文件地址" id="filepath" value="{{filepath}}" ng-change="filepathChanged()" ng-model="filepath">
                             <input type="file" ng-file-select="onFileSelect($files, 'file', 'filepath')">
                         </div>
                         <div class="form-group clearfix">
-                            <div class="col-md-6">
-                                <label>推送国家</label>
-                                <select name="country" class="form-control">
-                                    <option value="">不选择</option>
-                                    <option value="{{c['country']}}" ng-repeat="c in countrys">{{c['country']}}</option>
-                                </select>
+                            <label>推送国家</label>
+                            <input type="checkbox" ng-model="c_all" ng-click="c_all_click()">全选
+                            <!-- <input type="checkbox" name="notThisCountry">除以下选择的国家外-->
+                            <div class="clearfix"> 
+                                <div class="mutiplchecbox" ng-repeat="c in countrys">
+                                    <input type="checkbox" value="{{c['country']}}" ng-model="c.s" name="country[]">{{c['country'] | country}}
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label>推送语言</label>
-                                <select name="language" class="form-control">
-                                    <option value="">不选择</option>
-                                    <option value="{{l['value']}}" ng-repeat="l in lan">{{l['label']}}</option>
-                                </select>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label>推送语言</label>
+                            <input type="checkbox" ng-model="l_all" ng-click="l_all_click()">全选
+                            <!-- <input type="checkbox" name="notThisLan">除以下选择的语言外-->
+                            <div class="clearfix"> 
+                                <div class="mutiplchecbox" ng-repeat="l in lan">
+                                    <input type="checkbox" value="{{l['label']}}" ng-model="l.s"  name="language[]">{{l['label']}}
+                                </div>
                             </div>
                         </div>
                         <div class="form-group clearfix">
@@ -128,7 +154,7 @@
                         <div class="form-group clearfix">
                             <div class="col-md-6">
                                 <label>推送数目</label>
-                                <input type="number" min=500 max=20000 class="form-control" name="push_num" placeholder="推送数目">
+                                <input type="number" min="500" max="200000" step="500" value="500" class="form-control" name="push_num" placeholder="推送数目">
                             </div>
                             <div class="col-md-6">
                                 <label>是否设置推送优先</label>

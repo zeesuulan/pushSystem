@@ -5,11 +5,14 @@
 	if(isset($_COOKIE['username'])){
 		
 		$games = $D->count("flashgame", "id");
-		$tasks = $D->select("push_task", "*");
+		$priority_tasks = $D->select("push_task", "*", ["priority" => 1, "ORDER"=>"id DESC"]);
+		$nomarl_tasks = $D->select("push_task", "*", ["priority" => 0, "ORDER"=>"id DESC"]);
 		$countrys = $D->query('SELECT DISTINCT country FROM `flashgame` WHERE 1')->fetchAll(PDO::FETCH_ASSOC);
 
+
 		wapReturns(array("games" => $games,
-						 "tasks"=>$tasks,
+						 "priority_tasks"=>$priority_tasks,
+						 "nomarl_tasks"=>$nomarl_tasks,
 						 "countrys"=>$countrys), 0);
 
 	}else{

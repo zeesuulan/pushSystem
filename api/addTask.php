@@ -5,6 +5,7 @@
 	if(isset($_COOKIE['username'])){
 		if(isset($_POST)){
 			$p = $_POST;
+			var_dump($p);
 			if(!$p['title'] ||
 				!$p['content'] ||
 				!$p['file'] ||
@@ -18,6 +19,23 @@
 				exit;
 			}
 
+			// if(isset($p['notThisCountry']) && $p['notThisCountry'] == 'on') {
+			// 	$countrys = $D->query('SELECT DISTINCT country FROM `flashgame` WHERE 1')->fetchAll(PDO::FETCH_ASSOC);
+			// 	//排除这些国家
+			// }
+			
+			if(!isset($P['country'])) {
+				$p['country'] = "";
+			}else{
+				$p['language'] = join("|", $p['country']);
+			}
+			
+			if(!isset($P['language'])) {
+				$p['language'] = "";
+			}else{
+				$p['language'] = join("|", $p['language']);
+			}
+
 			$last_task_id = $D->insert("push_task", [
 				"title" => $p["title"],
 				"content" => $p["content"],
@@ -27,8 +45,8 @@
 				"language" => $p["language"],
 				"push_num" => $p["push_num"],
 				"push_time" => $p["push_time"],
-				"repush" => $p["repush"] == "on" ? 1 : 0,
-				"priority" => $p["priority"] == "on" ? 1 : 0
+				"repush" => isset($p["repush"]) ? 1 : 0,
+				"priority" => isset($p["priority"])? 1 : 0
 			]);
 
 			if($last_task_id) {

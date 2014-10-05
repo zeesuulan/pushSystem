@@ -1,6 +1,7 @@
 'use strict'
 //Chen's System
 var CS = angular.module("CS", ['ngRoute', "angularFileUpload", "ui.bootstrap.datetimepicker"])
+	
 
 CS.config(function($routeProvider) {
 	$routeProvider.
@@ -52,4 +53,14 @@ CS.config(function($routeProvider) {
 			return value == 1 ? "优先" : "一般"
 		};
 		return priority
+	})
+	.filter("country", function() {
+		var country = function(value) {
+			value = value.toUpperCase()
+			if(typeof(COUTNRY_LIST[value])){
+				return COUTNRY_LIST[value]
+			}
+			return value
+		};
+		return country
 	})
