@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Download Log</h1>
+    <pushnav></pushnav>
+    <div class="row">
+        <div class="col-md-6">
+        	<h4>下载记录 <span>共{{totle}}条</span></h4>
+            <table class="table table-striped table-bordered table-hover table-condensed" id="single-log-table">
+                <thead>
+                    <tr>
+                        <td>任务标题</td>
+                        <td>下载文件路径</td>
+                        <td>下载次数</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="d in dl_logs">
+                        <td>{{d.title}}</td>
+                        <td>{{d.file_path}}</td>
+                        <td>{{d.download_num}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

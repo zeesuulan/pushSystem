@@ -241,4 +241,21 @@ controller("c_pushsystem",
 			}, "json")
 		}
 	}
+).controller("c_dl_log",
+	function($scope) {
+		$scope.dl_log = "active"
+
+		getLogs()
+
+		function getLogs() {
+			$.get("api/getDownloadLogs.php", function(data) {
+				if (data.no == 0) {
+					$scope.$apply(function() {
+						$scope.dl_logs = data.data.download_log
+						$scope.totle = data.data.totle
+					})
+				}
+			}, "json")
+		}
+	}
 )
