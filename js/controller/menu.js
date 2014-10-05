@@ -4,11 +4,16 @@ angular.module("CS")
 		function($scope) {
 
 			$.get("api/checkLogin.php", function(data) {
-				if (data.no != 0) {
-					window.location.hash = "/index"
-					return
+				if (data.no == 0) {
+					$scope.$apply(function() {
+						$scope.isAdmin = data.data.group == 1
+
+						if (!$scope.isAdmin) {
+							window.location.hash = "/menu"
+						}
+					})
 				}
 			}, "json")
-			
+
 		}
 );

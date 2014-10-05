@@ -5,7 +5,6 @@
 	if(isset($_COOKIE['username'])){
 		if(isset($_POST)){
 			$p = $_POST;
-			var_dump($p);
 			if(!$p['title'] ||
 				!$p['content'] ||
 				!$p['file'] ||

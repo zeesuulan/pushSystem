@@ -15,7 +15,7 @@ controller("c_pushsystem",
 			if (data.no != 0) {
 				window.location.hash = "/index"
 				return
-			}else{
+			} else {
 				$scope.isAdmin = (data.data.group == 1)
 			}
 		}, "json")

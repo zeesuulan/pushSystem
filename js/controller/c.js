@@ -1,4 +1,5 @@
 'use strict'
+
 angular.module("CS")
 	.controller("c_index",
 		function($scope, $rootScope) {
@@ -7,9 +8,6 @@ angular.module("CS")
 
 			$.get("api/checkLogin.php", function(data) {
 				if (data.no == 0) {
-					$rootScope.$apply(function() {
-						$rootScope.group = data.data.group
-					})
 					window.location.hash = "/menu"
 				}
 				$scope.$apply(function() {
@@ -22,15 +20,10 @@ angular.module("CS")
 					$(ele.target).serialize(),
 					function(data) {
 						if (data.no == 0) {
-							$rootScope.$apply(function() {
-								$rootScope.group = data.data.group
-								$rootScope.username = data.data.username
-							})
-							console.log($rootScope)
 							$.cookie("username", data.data.username)
 							window.location.hash = "/menu"
 						} else {
-							alert(data.msg)
+							alert(data.data)
 						}
 					}, "json")
 			}
@@ -42,12 +35,17 @@ angular.module("CS")
 		function($scope) {
 
 			$.get("api/checkLogin.php", function(data) {
-				if (data.no != 0) {
-					window.location.hash = "/index"
-					return
+				if (data.no == 0) {
+					$scope.$apply(function() {
+						$scope.isAdmin = data.data.group == 1
+
+						if (!$scope.isAdmin) {
+							window.location.hash = "/menu"
+						}
+					})
 				}
 			}, "json")
-			
+
 		}
 );
 'use strict'
@@ -67,7 +65,7 @@ controller("c_pushsystem",
 			if (data.no != 0) {
 				window.location.hash = "/index"
 				return
-			}else{
+			} else {
 				$scope.isAdmin = (data.data.group == 1)
 			}
 		}, "json")
@@ -259,3 +257,64 @@ controller("c_pushsystem",
 		}
 	}
 )
+'use strict'
+angular.module("CS")
+	.controller("c_user",
+		function($scope, $rootScope) {
+
+			$.get("api/checkLogin.php", function(data) {
+				if (data.no == 0) {
+					$scope.$apply(function() {
+						$scope.isAdmin = data.data.group == 1
+
+						if (!$scope.isAdmin) {
+							window.location.hash = "/menu"
+						}
+					})
+				}
+			}, "json")
+
+			$scope.submit = function(evt) {
+				if (evt.target) {
+					$.post("api/adduser.php",
+						$(evt.target).serialize(),
+						function(data) {
+							if (data.no == 0) {
+								$(evt.target).find("input").val("")
+								getUsers()
+							} else {
+								alert(data.data)
+							}
+						}, "json")
+				}
+			}
+
+			$scope.delUser = function(evt) {
+				var btn = $(evt.target)
+				if (window.confirm("确认要删除?")) {
+					$.post("api/del.php", {
+						type: "user",
+						id: btn.attr("uid"),
+					}, function(data) {
+						if (data.no == 0) {
+							getUsers()
+						} else {
+							alert(data.data)
+						}
+					}, "json");
+				}
+			}
+
+			getUsers()
+
+			function getUsers() {
+				$.get("api/getUsers.php", function(data) {
+					if (data.no == 0) {
+						$scope.$apply(function() {
+							$scope.users = data.data.users
+						})
+					}
+				}, "json")
+			}
+
+		});

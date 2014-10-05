@@ -504,6 +504,10 @@ CS.config(function($routeProvider) {
 		templateUrl: 'template/dl_log.html',
 		controller: "c_dl_log"
 	}).
+	when('/user', {
+		templateUrl: 'template/user.html',
+		controller: "c_user"
+	}).
 	when('/logout', {
 		template: "<span>正在退出...</span>",
 		controller: "c_logout"

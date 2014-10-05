@@ -2,6 +2,9 @@
 	margin-top: 60px;
 }
 
+table td{
+	text-align: center;
+}
 #login h1{
 	padding: 10px 0;
 }

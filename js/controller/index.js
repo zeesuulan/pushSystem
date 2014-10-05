@@ -1,4 +1,5 @@
 'use strict'
+
 angular.module("CS")
 	.controller("c_index",
 		function($scope, $rootScope) {
@@ -7,9 +8,6 @@ angular.module("CS")
 
 			$.get("api/checkLogin.php", function(data) {
 				if (data.no == 0) {
-					$rootScope.$apply(function() {
-						$rootScope.group = data.data.group
-					})
 					window.location.hash = "/menu"
 				}
 				$scope.$apply(function() {
@@ -22,15 +20,10 @@ angular.module("CS")
 					$(ele.target).serialize(),
 					function(data) {
 						if (data.no == 0) {
-							$rootScope.$apply(function() {
-								$rootScope.group = data.data.group
-								$rootScope.username = data.data.username
-							})
-							console.log($rootScope)
 							$.cookie("username", data.data.username)
 							window.location.hash = "/menu"
 						} else {
-							alert(data.msg)
+							alert(data.data)
 						}
 					}, "json")
 			}
