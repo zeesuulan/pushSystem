@@ -22,14 +22,13 @@
 			// 	$countrys = $D->query('SELECT DISTINCT country FROM `flashgame` WHERE 1')->fetchAll(PDO::FETCH_ASSOC);
 			// 	//排除这些国家
 			// }
-			
-			if(!isset($P['country'])) {
+			if(!isset($p['country'])) {
 				$p['country'] = "";
 			}else{
-				$p['language'] = join("|", $p['country']);
+				$p['country'] = join("|", $p['country']);
 			}
 			
-			if(!isset($P['language'])) {
+			if(!isset($p['language'])) {
 				$p['language'] = "";
 			}else{
 				$p['language'] = join("|", $p['language']);

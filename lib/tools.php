@@ -33,8 +33,8 @@
 	}
 
 	function isAdmin(){
-		global $D
+		global $D;
 		$group = $D->get("user", ["group"], ["username"=>$_COOKIE['username']]);
-		return $group == 1
+		return $group['group'] == 1;
 	}
 

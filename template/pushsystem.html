@@ -39,7 +39,7 @@
                     <td>
                         <img ng-src="{{t.image}}">
                     </td>
-                    <td><a target="_blank" ng-href="api/download.php?filepath={{t.file}}">连接地址</a>
+                    <td><a target="_blank" ng-href="api/download.php?filepath={{t.file}}">链接地址</a>
                     </td>
                     <td>{{t.country}}</td>
                     <td>{{t.language}}</td>
@@ -62,7 +62,7 @@
                     <td>
                         <img ng-src="{{t.image}}">
                     </td>
-                    <td><a target="_blank" ng-href="{{t.file}}">连接地址</a>
+                    <td><a target="_blank" ng-href="api/download.php?filepath={{t.file}}">链接地址</a>
                     </td>
                     <td>{{t.country}}</td>
                     <td>{{t.language}}</td>
@@ -128,7 +128,7 @@
                             <!-- <input type="checkbox" name="notThisLan">除以下选择的语言外-->
                             <div class="clearfix"> 
                                 <div class="mutiplchecbox" ng-repeat="l in lan">
-                                    <input type="checkbox" value="{{l['label']}}" ng-model="l.s"  name="language[]">{{l['label']}}
+                                    <input type="checkbox" value="{{l['value']}}" ng-model="l.s"  name="language[]">{{l['label']}}
                                 </div>
                             </div>
                         </div>

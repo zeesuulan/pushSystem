@@ -541,7 +541,7 @@ CS.config(function($routeProvider) {
 		var country = function(value) {
 			value = value.toUpperCase()
 			if(typeof(COUTNRY_LIST[value])){
-				return COUTNRY_LIST[value]
+				return COUTNRY_LIST[value] + "("+ value + ")"
 			}
 			return value
 		};
