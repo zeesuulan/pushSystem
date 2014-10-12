@@ -72,7 +72,7 @@ controller("c_pushsystem",
 
 
 		$scope.$watch('data.date', function(newValue, oldValue) {
-			$scope.dateformat = moment(newValue).format("YYYY-MM-DD HH:m")
+			$scope.dateformat = moment(newValue).format("YYYY-MM-DD HH:mm")
 			$scope.repush = false
 		});
 
@@ -83,7 +83,6 @@ controller("c_pushsystem",
 		}
 
 		$scope.filepathChanged = function() {
-			console.log($scope.filepath)
 			if ($scope.filepath.indexOf(".apk") < 0 &&
 				$scope.filepath.indexOf(".ipa") < 0) {
 				alert("上传文件格式不对")
@@ -137,7 +136,6 @@ controller("c_pushsystem",
 				$.post("api/pushTask.php", {
 					task_id: tid
 				}, function(data) {
-
 					alert(data.data)
 				}, "json")
 			}
@@ -205,7 +203,9 @@ controller("c_pushsystem",
 		getFlashGame()
 
 		function getFlashGame() {
-			$.get("api/getFlashGames.php", function(data) {
+			$.get("api/getFlashGames.php", {
+				repush: 0
+			}, function(data) {
 				if (data.no == 0) {
 					$scope.$apply(function() {
 						$scope.games = data.data.games
@@ -233,6 +233,71 @@ controller("c_pushsystem",
 				}
 			}, "json")
 		}
+
+		$("#single-log-table").on("mouseenter", "img", function() {
+			$(this).stop().animate({
+				"width": "150px",
+				"height": "150px"
+			})
+		}).on("mouseleave", "img", function() {
+			$(this).stop().animate({
+				"width": "30px",
+				"height": "30px"
+			})
+		}).on("mouseover", 'span[data-toggle=tooltip]', function() {
+			$(this).tooltip('show');
+		})
+
+		$scope.$watch('data.date', function(newValue, oldValue) {
+			$scope.dateformat = moment(newValue).format("HH")
+		});
+
+		$scope.stick = function(evt) {
+
+		}
+
+		$scope.hour = 0
+
+		$scope.addHour = function() {
+			$.post("api/setTimeConfig.php", {
+				hour: $scope.hour,
+				type: "add"
+			}, function(data) {
+				if (data.no != 0) {
+					alert(data.data)
+				} else {
+					$scope.$apply(function() {
+						$scope.hours = data.data.hour.split("")
+					})
+				}
+			}, "json")
+		}
+
+		$scope.deleteHour = function(evt){
+			var t = $(evt.target)
+			$.post("api/setTimeConfig.php", {
+				hour: t.attr("hid"),
+				type: "del"
+			}, function(data) {
+				if (data.no != 0) {
+					alert(data.data)
+				} else {
+					$scope.$apply(function() {
+						$scope.hours = data.data.hour.split("")
+					})
+				}
+			}, "json")
+		}
+
+		$.get("api/getTimeConfig.php", function(data) {
+			if (data.no != 0) {
+				alert(data.data)
+			} else {
+				$scope.$apply(function() {
+					$scope.hours = data.data.hour.split("")
+				})
+			}
+		}, 'json')
 	}
 ).controller("c_pushlog",
 	function($scope) {

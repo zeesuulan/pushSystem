@@ -34,7 +34,13 @@
 				$p['language'] = join("|", $p['language']);
 			}
 
-			$last_task_id = $D->insert("push_task", [
+			if(isset($p["repush"])){
+				$dbname = 'repush_task';
+			}else{
+				$dbname = 'push_task';
+			}
+
+			$last_task_id = $D->insert($dbname, [
 				"title" => $p["title"],
 				"content" => $p["content"],
 				"file" => $p["file"],
