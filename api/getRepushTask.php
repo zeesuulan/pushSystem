@@ -5,7 +5,7 @@
 	if(isset($_COOKIE['username'])){
 		
 
-		$repush_tasks = $D->select("repush_task", "*", ["ORDER"=>"id DESC"]);
+		$repush_tasks = $D->select("repush_task", "*", ["ORDER"=>"index DESC, id ASC"]);
 
 		wapReturns(array("repush_tasks"=>$repush_tasks), 0);
 

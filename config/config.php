@@ -10,6 +10,7 @@ define("DB_DATABASE", "GCM");
  * Google API Key
  */
 define("GOOGLE_API_KEY", "AIzaSyDSwjDATD72McZRbQdsAaWnaw1jE_73hwk");
+define("CONFIGFILE_PATH", "../static_config/push_hour");
 
 date_default_timezone_set("Asia/Chongqing");
 

@@ -203,7 +203,15 @@ controller("c_pushsystem",
 		});
 
 		$scope.stick = function(evt) {
-
+			$.post("api/stickTask.php", {
+				id: $(evt.target).attr("tid")
+			}, function(data) {
+				if (data.no == 0) {
+					getTasks()
+				} else {
+					alert(data.data)
+				}
+			}, "json")
 		}
 
 		$scope.hour = 0
@@ -223,7 +231,7 @@ controller("c_pushsystem",
 			}, "json")
 		}
 
-		$scope.deleteHour = function(evt){
+		$scope.deleteHour = function(evt) {
 			var t = $(evt.target)
 			$.post("api/setTimeConfig.php", {
 				hour: t.attr("hid"),

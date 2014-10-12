@@ -3,8 +3,7 @@
 	require '../config/config.php';
 
 	if(isset($_COOKIE['username'])){
-		$filepath = '../static_config/push_hour';
-		$file = fopen($filepath, "a+");
+		$file = fopen(CONFIGFILE_PATH, "a+");
 		if($file){
 			$line = fread($file, "24");
 			fclose($file);
