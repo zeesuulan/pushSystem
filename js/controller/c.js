@@ -136,7 +136,32 @@ controller("c_pushsystem",
 				$.post("api/pushTask.php", {
 					task_id: tid
 				}, function(data) {
-					alert(data.data)
+					var res = data.data.result,
+						successNumber = res.success,
+						failureNumber = res.failure,
+						totalNumber = parseInt(successNumber) + parseInt(failureNumber),
+						RFNumber = 0,
+						RSNumber = 0
+
+					if (totalNumber == res.results.length) {
+						$.each(res.results, function(index, item) {
+							if (typeof(item['error']) != 'undefined') {
+								$.post("api/deleteTask.php", {
+									id: tid
+								}, function(data) {
+									if (data.no == 0) {
+										getFlashGame()
+									} else {
+										alert(data.data)
+									}
+								}, "json")
+							} else {
+							}
+						})
+					} else {
+						alert("提交出现问题")
+					}
+
 				}, "json")
 			}
 		}
