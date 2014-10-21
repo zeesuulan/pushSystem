@@ -5,8 +5,9 @@
 
 		global $D, $SERVER_ROOT;
 
-		//get TASK
-		$task = $D->get("push_task", "*", [
+		$DBName = ($type == 'single') ? "push_task" : "repush_task";
+				//get TASK
+		$task = $D->get($DBName, "*", [
 					"id" => $task_id
 				]);
 
@@ -29,7 +30,7 @@
 			}
 
 			$where["ORDER"] = "id DESC";
-			
+
 			$current_batch = 0;
 			$continue = true;
 			$EVERY = LIMIT;
@@ -78,11 +79,11 @@
 
 						$res = json_decode($res);
 
-						$updateRest = $D->update("push_task", [
+						$updateRest = $D->update($DBName, [
 							"success[+]" => $res->success,
 							"total[+]" => count($res->results)
 						], [
-							"id" => $_POST['task_id']
+							"id" => $task['id']
 						]);
 
 						$success += $res->success;
