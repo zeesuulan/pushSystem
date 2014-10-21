@@ -12,6 +12,14 @@ define("DB_DATABASE", "GCM");
 define("GOOGLE_API_KEY", "AIzaSyDSwjDATD72McZRbQdsAaWnaw1jE_73hwk");
 define("CONFIGFILE_PATH", "../static_config/push_hour");
 define("PUSHLOCK", "../cron/push_lock");
+define("LIMIT", 500);
+//上线变成false
+define("DEBUG", true);
+
+/*
+*	DB NAme
+*/
+define("REPUSH", "repush_task");
 
 date_default_timezone_set("Asia/Chongqing");
 

@@ -43,7 +43,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: ['js/**/*.js', 'css/*.css', 'less/*.less'],
-        tasks: ['less:all', 'concat:all'],
+        tasks: ['less:all', 'concat:all', 'uglify'],
         options: {
           spawn: false,
         },

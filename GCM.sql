@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2014-10-12 14:38:04
+-- Generation Time: 2014-10-21 14:14:52
 -- 服务器版本： 5.6.21
--- PHP Version: 5.5.17
+-- PHP Version: 5.5.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- 表的结构 `download_log`
 --
 
+DROP TABLE IF EXISTS `download_log`;
 CREATE TABLE IF NOT EXISTS `download_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `file_path` varchar(200) NOT NULL,
@@ -52,6 +53,7 @@ INSERT INTO `download_log` (`id`, `file_path`, `download_num`) VALUES
 -- 表的结构 `flashgame`
 --
 
+DROP TABLE IF EXISTS `flashgame`;
 CREATE TABLE IF NOT EXISTS `flashgame` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `register_id` text NOT NULL,
@@ -109,6 +111,7 @@ INSERT INTO `flashgame` (`id`, `register_id`, `device_id`, `app_name`, `app_id`,
 -- 表的结构 `push_log`
 --
 
+DROP TABLE IF EXISTS `push_log`;
 CREATE TABLE IF NOT EXISTS `push_log` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `task_id` int(255) NOT NULL,
@@ -116,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `push_log` (
   `datetime` varchar(20) NOT NULL,
   `type` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=63 ;
 
 --
 -- 转存表中的数据 `push_log`
@@ -126,7 +129,65 @@ INSERT INTO `push_log` (`id`, `task_id`, `operator`, `datetime`, `type`) VALUES
 (1, 1, 'admin', '14141414-1010-0101 0', 'repush'),
 (2, 1, 'admin', '2014-10-01 03:20:43', 'single'),
 (3, 1, 'admin', '2014-10-01 11:22:36', 'single'),
-(4, 6, 'admin', '2014-10-07 20:08:32', 'single');
+(4, 6, 'admin', '2014-10-07 20:08:32', 'single'),
+(5, 18, 'admin', '2014-10-19 22:13:07', 'single'),
+(6, 18, 'admin', '2014-10-19 22:19:35', 'single'),
+(7, 18, 'admin', '2014-10-19 22:20:15', 'single'),
+(8, 18, 'admin', '2014-10-19 22:21:01', 'single'),
+(9, 18, 'admin', '2014-10-19 22:22:16', 'single'),
+(10, 18, 'admin', '2014-10-19 22:23:28', 'single'),
+(11, 18, 'admin', '2014-10-19 22:26:24', 'single'),
+(12, 18, 'admin', '2014-10-19 22:26:47', 'single'),
+(13, 18, 'admin', '2014-10-19 22:27:06', 'single'),
+(14, 18, 'admin', '2014-10-19 22:27:20', 'single'),
+(15, 18, 'admin', '2014-10-19 22:27:40', 'single'),
+(16, 18, 'admin', '2014-10-19 22:37:28', 'single'),
+(17, 18, 'admin', '2014-10-19 22:37:55', 'single'),
+(18, 7, 'admin', '2014-10-19 22:38:10', 'single'),
+(19, 7, 'admin', '2014-10-19 22:38:35', 'single'),
+(20, 7, 'admin', '2014-10-19 22:39:05', 'single'),
+(21, 7, 'admin', '2014-10-19 22:39:30', 'single'),
+(22, 7, 'admin', '2014-10-19 22:39:52', 'single'),
+(23, 7, 'admin', '2014-10-19 22:41:33', 'single'),
+(24, 7, 'admin', '2014-10-19 22:41:54', 'single'),
+(25, 5, 'admin', '2014-10-19 22:42:23', 'single'),
+(26, 5, 'admin', '2014-10-20 22:22:17', 'single'),
+(27, 5, 'admin', '2014-10-20 22:22:25', 'single'),
+(28, 5, 'admin', '2014-10-20 22:26:30', 'single'),
+(29, 5, 'admin', '2014-10-20 22:57:35', 'single'),
+(30, 1, 'admin', '2014-10-20 22:58:10', 'single'),
+(31, 10, 'admin', '2014-10-20 22:58:48', 'single'),
+(32, 12, 'admin', '2014-10-20 22:58:55', 'single'),
+(33, 1, 'admin', '2014-10-20 22:59:02', 'single'),
+(34, 5, 'admin', '2014-10-20 22:59:07', 'single'),
+(35, 5, 'admin', '2014-10-20 23:01:51', 'single'),
+(36, 5, 'admin', '2014-10-20 23:02:46', 'single'),
+(37, 5, 'admin', '2014-10-20 23:04:23', 'single'),
+(38, 5, 'admin', '2014-10-20 23:06:05', 'single'),
+(39, 1, 'admin', '2014-10-21 20:56:04', 'single'),
+(40, 5, 'admin', '2014-10-21 20:56:13', 'single'),
+(41, 5, 'admin', '2014-10-21 20:57:01', 'single'),
+(42, 5, 'admin', '2014-10-21 20:59:03', 'single'),
+(43, 5, 'admin', '2014-10-21 20:59:53', 'single'),
+(44, 5, 'admin', '2014-10-21 21:06:20', 'single'),
+(45, 5, 'admin', '2014-10-21 21:07:08', 'single'),
+(46, 5, 'admin', '2014-10-21 21:07:28', 'single'),
+(47, 5, 'admin', '2014-10-21 21:08:13', 'single'),
+(48, 5, 'admin', '2014-10-21 21:09:29', 'single'),
+(49, 5, 'admin', '2014-10-21 21:09:58', 'single'),
+(50, 5, 'admin', '2014-10-21 21:33:31', 'single'),
+(51, 5, 'admin', '2014-10-21 21:48:57', 'repush'),
+(52, 5, 'admin', '2014-10-21 21:49:10', 'repush'),
+(53, 5, 'admin', '2014-10-21 21:49:32', 'repush'),
+(54, 5, 'admin', '2014-10-21 21:50:40', 'repush'),
+(55, 5, 'admin', '2014-10-21 21:50:54', 'repush'),
+(56, 5, 'admin', '2014-10-21 21:51:36', 'repush'),
+(57, 5, 'admin', '2014-10-21 21:52:33', 'repush'),
+(58, 5, 'admin', '2014-10-21 21:52:46', 'repush'),
+(59, 5, 'admin', '2014-10-21 21:54:30', 'repush'),
+(60, 4, 'admin', '2014-10-21 22:09:55', 'repush'),
+(61, 4, 'admin', '2014-10-21 22:11:05', 'repush'),
+(62, 5, 'admin', '2014-10-21 22:11:20', 'single');
 
 -- --------------------------------------------------------
 
@@ -134,6 +195,7 @@ INSERT INTO `push_log` (`id`, `task_id`, `operator`, `datetime`, `type`) VALUES
 -- 表的结构 `push_task`
 --
 
+DROP TABLE IF EXISTS `push_task`;
 CREATE TABLE IF NOT EXISTS `push_task` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
@@ -146,6 +208,8 @@ CREATE TABLE IF NOT EXISTS `push_task` (
   `repush` int(1) NOT NULL DEFAULT '0',
   `push_time` date NOT NULL,
   `priority` int(1) NOT NULL DEFAULT '0',
+  `success` int(20) NOT NULL DEFAULT '0',
+  `total` int(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
@@ -153,19 +217,17 @@ CREATE TABLE IF NOT EXISTS `push_task` (
 -- 转存表中的数据 `push_task`
 --
 
-INSERT INTO `push_task` (`id`, `title`, `content`, `image`, `file`, `country`, `language`, `push_num`, `repush`, `push_time`, `priority`) VALUES
-(1, '123123', '123123\r\n123\r\n123\r\n', '/pushsystem/uimage/sysxsy-9631139258.jpg', '/pushsystem/ufile/hjpdsphhh1.jpg', 'RO', 'de', 123, 0, '2014-09-06', 0),
-(4, '333', '332', '/pushsystem/uimage/sysxsy-9631139258.jpg', '/pushsystem/ufile/hjpdsphhh1.jpg', 'RS', '', 3333, 0, '2014-09-30', 1),
-(5, '32123', '3123213', '/pushsystem/uimage/sysxsy-9631139258.jpg', '/pushsystem/ufile/hjpdsphhh1.jpg', 'RS', '', 3333, 0, '2014-09-30', 0),
-(6, '(done)', '(done)', '/pushsystem/uimage/sysxsy-9631139258.jpg', '(done)', '', '', 3232, 0, '2014-10-01', 1),
-(7, '11111', '111121212', '/pushsystem/uimage/1.jpg', 'http://d.hiphotos.baidu.com/image/w%3D310/sign=2a0c4998cf11728b302d8a23f8fcc3b3/d01373f082025aaf5f03b8c2f9edab64034f1a82.jpg', 'RS', '', 500, 0, '2014-10-05', 0),
-(10, '2332', '323232', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX', '', 500, 0, '2014-10-05', 0),
-(11, '3232', '3232', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'a:12:{i:0;s:2:"SA";i', NULL, 500, 0, '2014-10-07', 0),
-(12, '3232', '3232', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX', '', 500, 0, '2014-10-07', 0),
-(13, '3232', '3232', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX', '', 500, 0, '2014-10-07', 0),
-(14, '3232', '3232', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX', '', 500, 0, '2014-10-07', 0),
-(16, '3333333', '2222222', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX', 'zh|en|fr|de|it|ja|ko', 2000, 0, '2014-10-07', 1),
-(18, '12312', '3123123', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX|BE|TH|SY|EG|SD', 'zh|en|fr|de|it|ja|ko|pl|tr|es|da|cs|ru|xu', 1500, 0, '2014-10-07', 1);
+INSERT INTO `push_task` (`id`, `title`, `content`, `image`, `file`, `country`, `language`, `push_num`, `repush`, `push_time`, `priority`, `success`, `total`) VALUES
+(1, '123123', '123123\r\n123\r\n123\r\n', '/pushsystem/uimage/sysxsy-9631139258.jpg', '/pushsystem/ufile/hjpdsphhh1.jpg', 'RO', 'de', 123, 0, '2014-09-06', 0, 0, 0),
+(4, '333', '332', '/pushsystem/uimage/sysxsy-9631139258.jpg', '/pushsystem/ufile/hjpdsphhh1.jpg', 'RS', '', 3333, 0, '2014-09-30', 1, 0, 0),
+(5, '32123', '3123213', '/pushsystem/uimage/sysxsy-9631139258.jpg', '/pushsystem/ufile/hjpdsphhh1.jpg', 'RS', '', 3333, 0, '2014-09-30', 0, 14, 14),
+(6, '(done)', '(done)', '/pushsystem/uimage/sysxsy-9631139258.jpg', '(done)', '', '', 3232, 0, '2014-10-01', 1, 0, 0),
+(10, '2332', '323232', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX', '', 500, 0, '2014-10-05', 0, 0, 0),
+(11, '3232', '3232', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'a:12:{i:0;s:2:"SA";i', NULL, 500, 0, '2014-10-07', 0, 0, 0),
+(12, '3232', '3232', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX', '', 500, 0, '2014-10-07', 0, 0, 0),
+(13, '3232', '3232', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX', '', 500, 0, '2014-10-07', 0, 0, 0),
+(14, '3232', '3232', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX', '', 500, 0, '2014-10-07', 0, 0, 0),
+(16, '3333333', '2222222', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX', 'zh|en|fr|de|it|ja|ko', 2000, 0, '2014-10-07', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -173,6 +235,7 @@ INSERT INTO `push_task` (`id`, `title`, `content`, `image`, `file`, `country`, `
 -- 表的结构 `repush_task`
 --
 
+DROP TABLE IF EXISTS `repush_task`;
 CREATE TABLE IF NOT EXISTS `repush_task` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
@@ -186,6 +249,8 @@ CREATE TABLE IF NOT EXISTS `repush_task` (
   `push_time` date NOT NULL,
   `priority` int(1) NOT NULL DEFAULT '0',
   `index` int(30) NOT NULL DEFAULT '0',
+  `success` int(20) NOT NULL DEFAULT '0',
+  `total` int(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `title` (`title`),
   KEY `index` (`index`)
@@ -195,11 +260,11 @@ CREATE TABLE IF NOT EXISTS `repush_task` (
 -- 转存表中的数据 `repush_task`
 --
 
-INSERT INTO `repush_task` (`id`, `title`, `content`, `image`, `file`, `country`, `language`, `push_num`, `repush`, `push_time`, `priority`, `index`) VALUES
-(1, '1', '123333', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX|BE|TH|SY|EG|SD', 'zh|en|fr|de|it|ja|ko|pl|tr|es|da|cs|ru|xu', 500, 1, '0000-00-00', 1, 0),
-(2, '2', '123333', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX|BE|TH|SY|EG|SD', 'zh|en|fr|de|it|ja|ko|pl|tr|es|da|cs|ru|xu', 500, 1, '0000-00-00', 0, 0),
-(3, '3', '1233334444', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX|BE|TH|SY|EG|SD', 'zh|en|fr|de|it|ja|ko|pl|tr|es|da|cs|ru|xu', 500, 1, '0000-00-00', 0, 0),
-(4, '4', '1233334444', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', '', '', 500, 1, '0000-00-00', 0, 1);
+INSERT INTO `repush_task` (`id`, `title`, `content`, `image`, `file`, `country`, `language`, `push_num`, `repush`, `push_time`, `priority`, `index`, `success`, `total`) VALUES
+(1, '1', '123333', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX|BE|TH|SY|EG|SD', 'zh|en|fr|de|it|ja|ko|pl|tr|es|da|cs|ru|xu', 500, 1, '0000-00-00', 1, 0, 0, 0),
+(2, '2', '123333', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX|BE|TH|SY|EG|SD', 'zh|en|fr|de|it|ja|ko|pl|tr|es|da|cs|ru|xu', 500, 1, '0000-00-00', 0, 0, 0, 0),
+(3, '3', '1233334444', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', 'SA|US|RS|RO|NL|FR|MX|BE|TH|SY|EG|SD', 'zh|en|fr|de|it|ja|ko|pl|tr|es|da|cs|ru|xu', 500, 1, '0000-00-00', 0, 0, 0, 0),
+(4, '4', '1233334444', '/pushsystem/uimage/1.jpg', '/pushsystem/ufile/2.apk', '', '', 500, 1, '0000-00-00', 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -207,6 +272,7 @@ INSERT INTO `repush_task` (`id`, `title`, `content`, `image`, `file`, `country`,
 -- 表的结构 `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,

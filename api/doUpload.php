@@ -15,16 +15,16 @@
 	    $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
 
 	    $extensions = array("jpeg","jpg","png");
-	    $file_extensions = array("apk","ipa");
+	    // $file_extensions = array("apk","ipa");
 
 	    if($_POST["type"] == 'image' && in_array($file_ext,$extensions )=== false){
 	        wapReturns("图片格式不对", -1);
 	        exit;
 	    }
-	    if($_POST["type"] == 'file' && in_array($file_ext,$file_extensions )=== false){
-	    	wapReturns("文件格式不对", -1);
-	        exit;
-	    }
+	    // if($_POST["type"] == 'file' && in_array($file_ext,$file_extensions )=== false){
+	    // 	wapReturns("文件格式不对", -1);
+	    //     exit;
+	    // }
 	    if($file_size > 2097152){
 	        wapReturns("图片太大", -1);
 	        exit;

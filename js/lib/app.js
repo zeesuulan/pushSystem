@@ -64,7 +64,7 @@ CS.config(function($routeProvider) {
 	})
 	.filter("success", function() {
 		var success = function(s,t) {
-			if(t == 0) return 0
+			if(t == 0 || !t) return 0
 			return (parseFloat(s/t).toFixed(2) * 100)
 		};
 		return success

@@ -77,45 +77,32 @@ controller("c_pushsystem",
 			}
 		}
 
+		var canpush = true
 		$scope.pushTask = function(evt) {
 			var target = $(evt.target),
 				tid = target.attr("tid"),
 				title = target.attr("title")
 
+			if(!canpush) {
+				alert("有任务正在推送中，稍后再操作");
+				return;
+			}
 			if (window.confirm("确定推送任务『" + title + "』 ？")) {
+				canpush = false
 				$.post("api/pushTask.php", {
 					task_id: tid
 				}, function(data) {
-					if (data.no == -1) {
-						alert(data.data)
+					if (typeof(data.data.result) != "object") {
+						alert(data.data.result)
 					} else {
 						var res = data.data.result,
 							successNumber = res.success,
-							failureNumber = res.failure,
-							totalNumber = parseInt(successNumber) + parseInt(failureNumber),
-							RFNumber = 0,
-							RSNumber = 0
+							totalNumber = res.total
 
-						if (totalNumber == res.results.length) {
-							$.each(res.results, function(index, item) {
-								if (typeof(item['error']) != 'undefined') {
-									// $.post("api/deleteGame.php", {
-									// 	id: tid
-									// }, function(data) {
-									// 	if (data.no == 0) {
-									// 		getFlashGame()
-									// 	} else {
-									// 		alert(data.data)
-									// 	}
-									// }, "json")
-								} else {}
-							})
-						} else {
-							alert("提交出现问题")
-						}
-						alert("成功推送" + successNumber + "条消息，失败" + failureNumber + "条")
+						alert("共向设备推送消息" + totalNumber + "条，成功推送" + successNumber + "条，失败" + (totalNumber - successNumber) + "条!")
 						getFlashGame()
 					}
+					canpush = true
 				}, "json")
 			}
 		}
@@ -314,7 +301,7 @@ controller("c_pushsystem",
 				if (data.no == 0) {
 					$scope.$apply(function() {
 						$scope.dl_logs = data.data.download_log
-						$scope.totle = data.data.totle
+						$scope.total = data.data.total
 					})
 				}
 			}, "json")
