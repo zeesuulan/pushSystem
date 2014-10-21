@@ -28,6 +28,8 @@
 				$where['LIKE'] = ["OR" => $like];
 			}
 
+			$where["ORDER"] = "id DESC";
+			
 			$current_batch = 0;
 			$continue = true;
 			$EVERY = LIMIT;
@@ -58,6 +60,7 @@
 						$r_ids = join(",", $r_ids);
 
 						if($r_ids == "") {
+							$continue = false;
 							return "没有合适的任务";
 						}
 
@@ -91,7 +94,7 @@
 						for($index = 0; $index < $total; ++$index){
 							if(isset($r[$index]->error)) {
 								$D->delete("flashgame", [
-									"id" => $games[$index]->id
+									"id" => $games[$index]['id']
 									]);
 							}
 						}
