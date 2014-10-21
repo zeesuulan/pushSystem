@@ -23,6 +23,7 @@
                     <td>目标国家</td>
                     <td>目标语言</td>
                     <td>推送数目</td>
+                    <td>成功率</td>
                     <td>操作</td>
                 </tr>
             </thead>
@@ -40,6 +41,7 @@
                     <td>{{t.country}}</td>
                     <td>{{t.language}}</td>
                     <td>{{t.push_num}}</td>
+                    <td>{{t.success}}/{{t.total}}({{t.success | success: t.total}}%)</td>
                     <td>
                         <button class="btn btn-info" tid={{t.id}} title="{{t.title}}" ng-click="stick($event)">置顶</button>
                     </td>

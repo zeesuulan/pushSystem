@@ -62,6 +62,13 @@ CS.config(function($routeProvider) {
 		};
 		return priority
 	})
+	.filter("success", function() {
+		var success = function(s,t) {
+			if(t == 0) return 0
+			return (parseFloat(s/t).toFixed(2) * 100)
+		};
+		return success
+	})
 	.filter("country", function() {
 		var country = function(value) {
 			value = value.toUpperCase()

@@ -22,11 +22,12 @@
                     <td>图标</td>
                     <td width="50px">文件</td>
                     <td width="50px">目标国家</td>
-                    <td>目标语言</td>
+                    <td width="50px">目标语言</td>
                     <td>推送数目</td>
                     <td>是否重复推送</td>
                     <td>推送时间</td>
                     <td>推送优先级</td>
+                    <td>推送成功率</td>
                     <td ng-show={{isAdmin}}>操作</td>
                     <td ng-show={{isAdmin}}>删除</td>
                 </tr>
@@ -47,6 +48,7 @@
                     <td>{{t.repush | repush}}</td>
                     <td>{{t.push_time}}</td>
                     <td>{{t.priority | priority}}</td>
+                    <td>{{t.success}}/{{t.total}}({{t.success | success: t.total}}%)</td>
                     <td ng-show={{isAdmin}}>
                         <!-- <button class="btn btn-primary">修改</button> -->
                         <button class="btn btn-info" ng-show={{t.push_time}} tid={{t.id}} title="{{t.title}}" ng-click="pushTask($event)">推送</button>
@@ -70,6 +72,7 @@
                     <td>{{t.repush | repush}}</td>
                     <td>{{t.push_time}}</td>
                     <td>{{t.priority | priority}}</td>
+                    <td>{{t.success}}/{{t.total}}({{t.success | success: t.total}}%)</td>
                     <td ng-show={{isAdmin}}>
                         <!-- <button class="btn btn-primary">修改</button> -->
                         <button class="btn btn-info" ng-show={{t.push_time}} tid={{t.id}} title="{{t.title}}" ng-click="pushTask($event)">推送</button>
