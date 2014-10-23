@@ -20,8 +20,8 @@
                     <td>消息标题</td>
                     <td>图标</td>
                     <td>文件</td>
-                    <td>目标国家</td>
-                    <td>目标语言</td>
+                    <td width="100">目标国家</td>
+                    <td width="100">目标语言</td>
                     <td>推送数目</td>
                     <td>成功率</td>
                     <td>操作</td>
@@ -38,8 +38,8 @@
                     </td>
                     <td><a target="_blank" ng-href="api/download.php?filepath={{t.file}}">链接地址</a>
                     </td>
-                    <td>{{t.country}}</td>
-                    <td>{{t.language}}</td>
+                    <td>{{t.country | cut}}</td>
+                    <td>{{t.language | cut}}</td>
                     <td>{{t.push_num}}</td>
                     <td>{{t.success}}/{{t.total}}({{t.success | success: t.total}}%)</td>
                     <td>

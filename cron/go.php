@@ -23,7 +23,7 @@ define("LOCK", "push_lock.js");
 			}
 
 			if($task['language'] != "") {
-				$like['language'] = explode("|", $task['language']);
+				$like['device_info'] = explode("|", $task['language']);
 			}
 
 			if(count($like) > 0) {

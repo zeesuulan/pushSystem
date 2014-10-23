@@ -42,8 +42,8 @@
                     </td>
                     <td width="50"><a target="_blank" ng-href="api/download.php?filepath={{t.file}}">链接地址</a>
                     </td>
-                    <td width="100">{{t.country}}</td>
-                    <td width="100">{{t.language}}</td>
+                    <td width="100">{{t.country | cut}}</td>
+                    <td width="100">{{t.language | cut}}</td>
                     <td>{{t.push_num}}</td>
                     <td>{{t.repush | repush}}</td>
                     <td>{{t.push_time}}</td>
@@ -66,8 +66,8 @@
                     </td>
                     <td><a target="_blank" ng-href="api/download.php?filepath={{t.file}}">链接地址</a>
                     </td>
-                    <td>{{t.country}}</td>
-                    <td>{{t.language}}</td>
+                    <td>{{t.country | cut}}</td>
+                    <td>{{t.language | cut}}</td>
                     <td>{{t.push_num}}</td>
                     <td>{{t.repush | repush}}</td>
                     <td>{{t.push_time}}</td>

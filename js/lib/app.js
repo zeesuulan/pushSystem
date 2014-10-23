@@ -82,4 +82,13 @@ CS.config(function($routeProvider) {
 			return value
 		};
 		return country
+	}).filter("cut", function(){
+		var cut = function(value) {
+			if(value.length > 10) {
+				return value.slice(0, 10) + "..."
+			}else{
+				return value
+			}
+		}
+		return cut
 	})
