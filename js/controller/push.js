@@ -66,7 +66,8 @@ controller("c_pushsystem",
 		$scope.del = function(evt) {
 			if (window.confirm("确定删除任务？")) {
 				$.post("api/deleteTask.php", {
-					id: $(evt.target).attr("tid")
+					id: $(evt.target).attr("tid"),
+					type: "single"
 				}, function(data) {
 					if (data.no == 0) {
 						getFlashGame()
@@ -200,6 +201,21 @@ controller("c_pushsystem",
 			}, "json")
 		}
 
+		$scope.del = function(evt) {
+			if (window.confirm("确定删除任务？")) {
+				$.post("api/deleteTask.php", {
+					id: $(evt.target).attr("tid"),
+					type: "repush"
+				}, function(data) {
+					if (data.no == 0) {
+						getTasks()
+					} else {
+						alert(data.data)
+					}
+				}, "json")
+			}
+		}
+
 		$("#single-log-table").on("mouseenter", "img", function() {
 			$(this).stop().animate({
 				"width": "150px",
@@ -330,6 +346,7 @@ controller("c_dl_log",
 				if (data.no == 0) {
 					$scope.$apply(function() {
 						$scope.dl_logs = data.data.download_log
+						$scope.redl_logs = data.data.redownload_log
 						$scope.total = data.data.total
 					})
 				}

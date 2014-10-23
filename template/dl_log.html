@@ -18,6 +18,11 @@
                         <td>{{d.file_path}}</td>
                         <td>{{d.download_num}}/{{d.success}}({{d.download_num | success: d.success}}%)</td>
                     </tr>
+                    <tr ng-repeat="rd in redl_logs">
+                        <td>{{rd.title}}</td>
+                        <td>{{rd.file_path}}</td>
+                        <td>{{rd.download_num}}/{{rd.success}}({{rd.download_num | success: rd.success}}%)</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -13,7 +13,7 @@
 			],[
 				"type" => 'single',
 				"ORDER" => "push_log.datetime DESC",
-				"LIMIT" => "0, 30"
+				"LIMIT" => [0, 30]
 			]);
 
 		$repushlogs = $D->select("push_log", [
@@ -25,7 +25,7 @@
 			],[
 				"type" => 'repush',
 				"ORDER" => "push_log.datetime DESC",
-				"LIMIT" => "0, 30"
+				"LIMIT" => [0, 30]
 			]);
 
 		wapReturns(array("singleLogs" => $singleLogs,

@@ -5,7 +5,9 @@
 	if(isset($_COOKIE['username']) && isAdmin()){
 		
 		if(isset($_POST['id'])) {
-			$D->delete("push_task", [
+			$DBName = $_POST['type'] == 'repush' ? "repush_task" : "push_task";
+
+			$D->delete($DBName, [
 				"id" => $_POST["id"]
 			]);
 
