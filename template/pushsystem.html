@@ -20,9 +20,9 @@
                 <tr>
                     <td>消息标题</td>
                     <td>图标</td>
-                    <td width="50px">文件</td>
-                    <td width="50px">目标国家</td>
-                    <td width="50px">目标语言</td>
+                    <td width="50">文件</td>
+                    <td width="100">目标国家</td>
+                    <td width="100">目标语言</td>
                     <td>推送数目</td>
                     <td>是否重复推送</td>
                     <td>推送时间</td>
@@ -40,10 +40,10 @@
                     <td>
                         <img ng-src="{{t.image}}">
                     </td>
-                    <td><a target="_blank" ng-href="api/download.php?filepath={{t.file}}">链接地址</a>
+                    <td width="50"><a target="_blank" ng-href="api/download.php?filepath={{t.file}}">链接地址</a>
                     </td>
-                    <td>{{t.country}}</td>
-                    <td>{{t.language}}</td>
+                    <td width="100">{{t.country}}</td>
+                    <td width="100">{{t.language}}</td>
                     <td>{{t.push_num}}</td>
                     <td>{{t.repush | repush}}</td>
                     <td>{{t.push_time}}</td>
@@ -136,23 +136,8 @@
                             </div>
                         </div>
                         <div class="form-group clearfix">
-                            <div class="col-md-6">
-                                <label>推送时间</label>
-                                <a class="dropdown-toggle my-toggle-select" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
-                                    <div class="input-append">
-                                        <input type="text" id="push_time" class="form-control" name="push_time" placeholder="推送时间" data-ng-model="dateformat">
-                                        <span class="add-on"><i class="icon-calendar"></i>
-                                        </span>
-                                    </div>
-                                </a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="push_time">
-                                    <datetimepicker data-ng-model="data.date" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle'}"></datetimepicker>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <label>是否重复推送</label>
-                                <input type="checkbox" class="form-control" name="repush" id="repush" ng-model="repush" ng-change="repushChanged()">
-                            </div>
+                            <label>是否重复推送</label>
+                            <input type="checkbox" class="form-control" name="repush" id="repush" ng-model="repush" ng-change="repushChanged()">
                         </div>
                         <div class="form-group clearfix">
                             <div class="col-md-6">

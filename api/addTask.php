@@ -13,10 +13,11 @@
 				!$p['push_num']){
 				wapReturns("必填项未填写！", -1);
 				exit;
-			}else if(!$p['push_time'] && !$p['repush']){
-				wapReturns("推送时间或者是否重复推送未选择", -1);
-				exit;
 			}
+			// else if(!$p['push_time'] && !$p['repush']){
+			// 	wapReturns("推送时间或者是否重复推送未选择", -1);
+			// 	exit;
+			// }
 
 			// if(isset($p['notThisCountry']) && $p['notThisCountry'] == 'on') {
 			// 	$countrys = $D->query('SELECT DISTINCT country FROM `flashgame` WHERE 1')->fetchAll(PDO::FETCH_ASSOC);
@@ -48,7 +49,7 @@
 				"country" => $p["country"],
 				"language" => $p["language"],
 				"push_num" => $p["push_num"],
-				"push_time" => $p["push_time"],
+				"push_time" => "0000-00-00",
 				"repush" => isset($p["repush"]) ? 1 : 0,
 				"priority" => isset($p["priority"])? 1 : 0
 			]);

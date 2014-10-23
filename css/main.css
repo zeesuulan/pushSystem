@@ -21,6 +21,9 @@ table td{
 #list{
 	margin: 20px 0;
 }
+table{
+	word-break:break-all;
+}
 .info{
 	border-bottom: 1px dashed #ccc;
 	padding-bottom: 10px;
