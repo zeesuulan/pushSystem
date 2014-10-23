@@ -29,6 +29,10 @@ CS.config(function($routeProvider) {
 		templateUrl: 'template/dl_log.html',
 		controller: "c_dl_log"
 	}).
+	when('/pushing', {
+		templateUrl: 'template/pushing.html',
+		controller: "c_pushing"
+	}).
 	when('/user', {
 		templateUrl: 'template/user.html',
 		controller: "c_user"

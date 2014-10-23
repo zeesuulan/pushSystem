@@ -33,11 +33,11 @@ controller("c_pushsystem",
 		}
 
 		$scope.filepathChanged = function() {
-			if ($scope.filepath.indexOf(".apk") < 0 &&
-				$scope.filepath.indexOf(".ipa") < 0) {
-				alert("上传文件格式不对")
-				$scope.filepath = ""
-			}
+			// if ($scope.filepath.indexOf(".apk") < 0 &&
+			// 	$scope.filepath.indexOf(".ipa") < 0) {
+			// 	alert("上传文件格式不对")
+			// 	$scope.filepath = ""
+			// }
 		}
 		$scope.c_all_click = function() {
 			angular.forEach($scope.countrys, function(c) {
@@ -83,7 +83,7 @@ controller("c_pushsystem",
 				tid = target.attr("tid"),
 				title = target.attr("title")
 
-			if(!canpush) {
+			if (!canpush) {
 				alert("有任务正在推送中，稍后再操作");
 				return;
 			}
@@ -290,7 +290,36 @@ controller("c_pushsystem",
 			}, "json")
 		}
 	}
-).controller("c_dl_log",
+).
+controller("c_pushing",
+	function($scope) {
+		$scope.pushing = "active"
+		getStaus()
+
+		function getStaus() {
+			$.get("cron/push_lock.js?" + Math.random(), function(data) {
+				if (data != "stop") {
+					setTimeout(function() {
+						getStaus()
+					}, 1000)
+				} else {
+					data = ""
+				}
+
+				$scope.$apply(function() {
+					$scope.pushTxt = data
+				})
+			}, "html")
+		}
+
+		$scope.stopTask = function(argument) {
+			$.get("api/stopTask.php", function(data) {
+				alert(data.data)
+			}, "json");
+		}
+	}
+).
+controller("c_dl_log",
 	function($scope) {
 		$scope.dl_log = "active"
 
