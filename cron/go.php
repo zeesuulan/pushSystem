@@ -1,6 +1,7 @@
 <?php 
 
 define("LOCK", "push_lock.js");
+set_time_limit(1800);
 
 	function go($task_id, $type) {
 
@@ -59,7 +60,7 @@ define("LOCK", "push_lock.js");
 
 					$file = fopen(LOCK, "w+");
 
-					fwrite($file, "现在正在进行任务：".$task['title'].", 从".$from."个开始， 计划推送".$EVERY."个! 共".$task["push_num"]."个");
+					fwrite($file, "现在正在进行任务：".$task['title'].", 从第".$from."个开始， 计划推送".$EVERY."个! 共".$task["push_num"]."个");
 					fclose($file);
 
 					//没有超过总数或者还有剩余的
@@ -120,11 +121,11 @@ define("LOCK", "push_lock.js");
 
 							$D->insert("push_log", [
 								"task_id" => $task['id'],
-								"operator" => $_COOKIE['username'],
+								"operator" => "system",
 								"datetime" => date("Y-m-d H:i:s"),
 								"type" => $type
 							]);
-							sleep(5);
+							sleep(1);
 						}
 					}
 					++$current_batch;

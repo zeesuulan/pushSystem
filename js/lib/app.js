@@ -76,15 +76,16 @@ CS.config(function($routeProvider) {
 	.filter("country", function() {
 		var country = function(value) {
 			value = value.toUpperCase()
-			if(typeof(COUTNRY_LIST[value])){
+			
+			if(typeof(COUTNRY_LIST[value]) != 'undefined'){
 				return COUTNRY_LIST[value] + "("+ value + ")"
 			}
-			return value
+			return  "("+ value + ")"
 		};
 		return country
 	}).filter("cut", function(){
 		var cut = function(value) {
-			if(value.length > 10) {
+			if(typeof(value) == 'string' && value.length > 10) {
 				return value.slice(0, 10) + "..."
 			}else{
 				return value
